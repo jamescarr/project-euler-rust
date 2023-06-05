@@ -18,6 +18,11 @@ run_tests:
 	@echo "Running tests..."
 	@$(CARGO) test -- --nocapture
 
+run_tests%:
+	@echo "Running tests for problem$* ..."
+	@$(CARGO) test problem$* -- --nocapture
+
+
 clean:
 	@echo "Cleaning up..."
 	@$(CARGO) clean
@@ -36,7 +41,7 @@ build:
 problem%:
 	@$(CARGO) run problem$*
 	@if [ $$? -eq 0 ]; then \
-		echo "Problem $* completed successfully."; \
+		echo "Problem$* solved."; \
 	else \
 		echo "Error running problem $*."; \
 	fi

@@ -24,6 +24,29 @@ fn sum_of_multiples(target: u32) -> u32 {
 mod tests {
     use super::*;
 
+     #[test]
+    fn test_sum_of_multiples_0() {
+        // The edge case of zero should return zero, as there are no numbers below zero.
+        let target = 0;
+        let expected = 0;
+        assert_eq!(sum_of_multiples(target), expected);
+    }
+
+    #[test]
+    fn test_sum_of_multiples_3() {
+        // The edge case of three should return zero, as there are no multiples of 3 or 5 below three.
+        let target = 3;
+        let expected = 0;
+        assert_eq!(sum_of_multiples(target), expected);
+    }
+    
+    #[test]
+    fn test_sum_of_multiples_5() {
+        // The edge case of five should return 3, as the only multiple of 3 or 5 below five is 3.
+        let target = 5;
+        let expected = 3;
+        assert_eq!(sum_of_multiples(target), expected);
+    }
     #[test]
     fn test_sum_of_multiples_10() {
         let target = 10;
@@ -37,4 +60,6 @@ mod tests {
         let expected = 233_168;
         assert_eq!(sum_of_multiples(target), expected);
     }
+
+
 }
