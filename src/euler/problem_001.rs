@@ -4,7 +4,7 @@
 //  3, 5, 6 and 9. The sum of these multiples is 23.
 //
 //  Find the sum for multiples of 3 and 5 below 1000.
-pub fn problem_001() {
+pub fn solve() {
     let target_number = 1000;
     let result = sum_of_multiples(target_number);
     println!("The sum of multiples of 3 and 5 below {} is: {}", target_number, result);
