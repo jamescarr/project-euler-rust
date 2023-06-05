@@ -14,7 +14,7 @@ problem_001 completed successfully.
 
 ```
 
-## Runnin the Tests
+## Running the Tests
 
 There are two make targets for running tests.
 
