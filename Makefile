@@ -16,12 +16,13 @@ init:
 
 
 next_problem:
-	$(eval PROBLEM_NUM=$(shell sh -c 'ls src/euler/problem_*.rs | wc -l | xargs expr 1 +'))
-	$(eval PROBLEM_NAME=problem_$(shell printf "%03d" $(PROBLEM_NUM)))
-	touch src/euler/$(PROBLEM_NAME).rs
-	awk '/\/\/ new problem mod/{print;print "pub mod $(PROBLEM_NAME);";next}1' src/euler/mod.rs > tmp && mv tmp src/euler/mod.rs
-	echo "pub fn solve() {\n\tprintln!(\"$(PROBLEM_NAME) not yet implemented.\");\n}" >> src/euler/$(PROBLEM_NAME).rs
-	awk '/\/\/ new problem mapping/{print;print "\"$(PROBLEM_NAME)\" => $(PROBLEM_NAME)::solve(),";next}1' src/euler/mod.rs > tmp && mv tmp src/euler/mod.rs
+	@$(eval PROBLEM_NUM=$(shell sh -c 'ls src/euler/problem_*.rs | wc -l | xargs expr 1 +'))
+	@$(eval PROBLEM_NAME=problem_$(shell printf "%03d" $(PROBLEM_NUM)))
+	@touch src/euler/$(PROBLEM_NAME).rs > /dev/null
+	@awk '/\/\/ new problem mod/{print;print "pub mod $(PROBLEM_NAME);";print "";next}1' src/euler/mod.rs > tmp && mv tmp src/euler/mod.rs > /dev/null
+	@echo "pub fn solve() {\n\tprintln!(\"$(PROBLEM_NAME) not yet implemented.\");\n}" >> src/euler/$(PROBLEM_NAME).rs
+	@awk '/\/\/ new problem mapping/{print;print "\t\"$(PROBLEM_NAME)\" => $(PROBLEM_NAME)::solve(),";print "";next}1' src/euler/mod.rs > tmp && mv tmp src/euler/mod.rs > /dev/null
+	@echo "Created new problem file: src/euler/$(PROBLEM_NAME).rs"
 
 run_tests:
 	@echo "Running tests..."
