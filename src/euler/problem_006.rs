@@ -8,7 +8,7 @@
 // Find the difference between the sum of the squares of the first one hundred natural numbers 
 // and the square of the sum.
 
-fn solve() {
+pub fn solve() {
     let result = sum_square_difference(100);
 
     println!("The difference between the sum of the squares of the first one hundred natural numbers and the square of the sum is {}", result);
